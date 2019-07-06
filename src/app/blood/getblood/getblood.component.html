@@ -1,0 +1,75 @@
+
+<app-navbar></app-navbar>
+<section id="main-content" style="margin-bottom:2%">
+  <section class="wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb" style="margin-top:20px;">
+        <li>
+          <a href="/dashboard">
+            <i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="active">Get Blood</li>
+      </ol>
+    </section>
+    <!-- BASIC FORM VALIDATION -->
+    <div class="row mt">
+      <div class="col-lg-12 col-md-12">
+
+        <form role="form" class="form-horizontal style-form" #f="ngForm" (ngSubmit)="getBlood()">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <div *ngIf="alert1" class="alert alert-success">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              {{notify1}}
+            </div>
+            <div *ngIf="alert2" class="alert alert-danger">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              {{notify2}}
+            </div>
+            <h3 class="text-center">GET BLOOD</h3>
+            <div class="form-group">
+<!--              <input  class="form-control" placeholder="Stock Id" disabled >-->
+            </div>
+            <div class="form-group">
+<!--              <input  class="form-control" placeholder="Branch Id" disabled >-->
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" [(ngModel)]="newval" name="used" placeholder="Blood Amount (ml)" >
+            </div>
+            <div class="form-group">
+              <select class="form-control" [(ngModel)]="getid" name="type">
+                <option *ngFor="let st of stocks"  value="{{st.id}}">{{st.type}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+<!--              <input type="text"  class="form-control" placeholder="Taken By" disabled required>-->
+            </div>
+
+
+
+
+          </div>
+
+
+          <div class="col-md-4"></div>
+          <div class="col-md-12">
+
+            <div class="form-group text-center">
+              <button class="form-control btn btn-danger" style="width:200px">Get Blood</button>
+            </div>
+          </div>
+
+
+        </form>
+<!--        <button (click)="getBlood()" class="btn btn-compose">Get Blood</button>-->
+        <!-- </div> -->
+        <!-- /form-panel -->
+      </div>
+      <!-- /col-lg-12 -->
+    </div>
+    <!-- /row -->
+
+  </section>
+  <!-- /wrapper -->
+</section>
+<app-footer></app-footer>

@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<!--main content start-->
+<div id="main-content">
+  <section class="wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb" style="margin-top:20px;margin-bottom: 0px;">
+        <li>
+          <a href="/dashboard">
+            <i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="active">Used</li>
+      </ol>
+    </section>
+  </section>
+  <div class="wrapper"  style="margin-top: 5px">
+
+    <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-6 col-lg-3"*ngFor="let bld of bloodstocks;">
+        <div class="card bg-c-pink order-card" >
+          <div class="card-block">
+            <h1 class="text-center" style="margin-top: 0px" style ="font-weight: bold;" >{{bld.branchId}}</h1>
+
+            <h2 style="font-weight: bold" class="text-center">{{bld.type}}</h2>
+            <br>
+
+            <h4 class="text-center">{{bld.used}} ml</h4>
+
+
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<app-footer></app-footer>
+

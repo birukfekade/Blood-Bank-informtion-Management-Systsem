@@ -1,0 +1,41 @@
+
+
+
+<div id="login-page">
+  <div class="container">
+
+    <form class="form-login" #f="ngForm" (ngSubmit)="onLogin()">
+      <div class="text-center hidden-xs hidden-sm">
+        <div style="padding-left: 25%;">
+          <img src="../assets/images/ui-sam.jpg" class="img-responsive text-center" alt="logo" width="150px" style="border-radius:50%">
+        </div>
+
+      </div>
+      <h4 class="form-login-heading text-center" style="color:black">NBBS of Ethiopia</h4>
+      <div class="login-wrap">
+        <div class="form-group">
+          <input [(ngModel)]="user.username" name="username"   class="form-control" placeholder="User Name" required autofocus>
+          <!-- <hr> -->
+        </div>
+
+        <br>
+        <div class="form-group">
+          <input [(ngModel)]="user.password" name="password" type="password" class="form-control" placeholder="Password" required>
+          <!-- <hr> -->
+        </div>
+        <br>
+
+        <div class="form-group">
+          <button class="btn btn-theme btn-block" type="submit">
+            <i class="fa fa-lock"></i> Login</button>
+          <!-- <hr> -->
+        </div>
+        <div *ngIf="active===true" class="alert alert-danger">
+          <strong>Erorr!</strong> Wrong UserName or Email!
+        </div>
+
+      </div>
+
+    </form>
+  </div>
+</div>

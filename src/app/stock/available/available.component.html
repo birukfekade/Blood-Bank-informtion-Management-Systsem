@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<!--main content start-->
+<div id="main-content">
+  <section class="wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb" style="margin-top:20px;margin-bottom: 0px;">
+        <li>
+          <a href="/dashboard">
+            <i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="active">Available</li>
+      </ol>
+    </section>
+  </section>
+  <div class="wrapper"  style="margin-top: 5px">
+
+    <div class="row">
+
+      <div class="col-md-3 col-sm-6 col-xs-6 col-lg-3"*ngFor="let bld of bloodstocks;">
+        <div class="card bg-c-green order-card" >
+          <div class="card-block">
+            <h1 class="text-center" style="margin-top: 0px" style ="font-weight: bold;" >{{bld.branchId}}</h1>
+<!--            <table style="width: 100%" class="text-center table-responsive">-->
+<!--              <tr ><td ><h3 style="font-weight: bold">A+</h3></td> <td><h3 style="font-weight: bold">A-</h3></td> <td><h3 style="font-weight: bold">B+</h3></td> <td><h3 style="font-weight: bold">B-</h3></td></tr>-->
+<!--              <tr><td><h5>{{bld.available}} ml</h5></td> <td><h5>{{bld.available}}</h5></td> <td><h5>{{bld.available}}</h5></td> <td><h5>{{bld.available}}</h5></td></tr>-->
+
+<!--              <tr ><td><h3 style="font-weight: bold">AB+</h3></td> <td><h3 style="font-weight: bold">AB-</h3></td> <td><h3 style="font-weight: bold">O+</h3></td> <td><h3 style="font-weight: bold">O-</h3></td></tr>-->
+<!--              <tr><td><h5>{{bld.available}} ml</h5></td> <td><h5>{{bld.available}} ml</h5></td> <td><h5>{{bld.available}}</h5></td> <td><h5>{{bld.available}}</h5></td></tr>-->
+
+<!--            </table>-->
+            <h2 style="font-weight: bold" class="text-center">{{bld.type}}</h2>
+            <br>
+
+            <h4 class="text-center">{{bld.available}} ml</h4>
+
+
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<app-footer></app-footer>
+

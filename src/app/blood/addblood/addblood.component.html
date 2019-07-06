@@ -1,0 +1,78 @@
+
+<app-navbar></app-navbar>
+<section id="main-content" style="margin-bottom:2%">
+  <section class="wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb" style="margin-top:20px;">
+        <li>
+          <a href="/dashboard">
+            <i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="active">Add Blood</li>
+      </ol>
+    </section>
+    <!-- BASIC FORM VALIDATION -->
+    <div class="row mt">
+      <div class="col-lg-12 col-md-12">
+
+        <form role="form" class="form-horizontal style-form" #f="ngForm" (ngSubmit)="addBlood()">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <div *ngIf="alert1" class="alert alert-success">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              {{notify1}}
+            </div>
+            <div *ngIf="alert2" class="alert alert-danger">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              {{notify2}}
+            </div>
+
+            <h3 class="text-center">ADD BLOOD</h3>
+            <div class="form-group">
+<!--              <input  class="form-control" [(ngModel)]="bloodstock.id" name="id" value="5ccbe92dc87735419c995872" placeholder="Stock Id" disabled required>-->
+            </div>
+            <div class="form-group">
+<!--              <input  class="form-control" [(ngModel)]="bloodstock.branchid" name="branchid" value="bra 41" placeholder="Branch Id" disabled required>-->
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" [(ngModel)]="newval" name="available" placeholder="Blood Amount (ml)" required>
+            </div>
+            <div class="form-group">
+           <select class="form-control" [(ngModel)]="bloodstock.id" name="type">
+             <option *ngFor="let st of stocks"  value="{{st.id}}">{{st.type}}</option>
+           </select>
+            </div>
+<!--            <div class="form-group">-->
+<!--              <input  class="form-control" type="date"  required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <input type="text"  class="form-control" placeholder="Submitted By" disabled required>-->
+<!--            </div>-->
+
+
+
+
+          </div>
+
+
+          <div class="col-md-4"></div>
+          <div class="col-md-12">
+
+            <div class="form-group text-center">
+              <button type="submit" class="form-control btn btn-success" style="width:200px">Add Blood</button>
+            </div>
+          </div>
+
+
+        </form>
+        <!-- </div> -->
+        <!-- /form-panel -->
+      </div>
+      <!-- /col-lg-12 -->
+    </div>
+    <!-- /row -->
+
+  </section>
+  <!-- /wrapper -->
+</section>
+<app-footer></app-footer>

@@ -1,0 +1,208 @@
+
+<app-navbar></app-navbar>
+<!--main content start-->
+<div id="main-content" >
+  <div class="wrapper">
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <ol class="breadcrumb" style="margin-top:20px;">
+          <li>
+            <a href="/dashboard">
+              <i class="fa fa-dashboard"></i> Dashboard</a>
+          </li>
+          <li class="active">Branch</li>
+        </ol>
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <div class=" col-sm-12 col-md-12 ">
+            <div class="box">
+              <div class="box-header with-border">
+              <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-md">
+              <i class="fa fa-plus"></i> New</a>
+
+              </div>
+              <br>
+
+              <div class="box-body ">
+
+                <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                  <thead>
+                  <tr>
+
+                    <th>Branch Name</th>
+                    <th>City</th>
+                    <th>Subcity/Region</th>
+                    <th>Zone</th>
+                    <th>Woreda</th>
+                    <th>Kebele</th>
+                    <th>Telephone</th>
+                    <th>P.O.BOX</th>
+                    <th>Adminstrator</th>
+                    <th style="width:280px">Action</th>
+                  </tr>
+                  </thead>
+                  <tfoot>
+                  <tr>
+                    <th><input style="width: 100px" type="text" [(ngModel)]="selectedbranchname" name="city" class="form-control" placeholder="BranchName" required></th>
+                     <th><input style="width:100px" type="text" [(ngModel)]="selectedcity" name="city" class="form-control" placeholder="City" required></th>
+                    <th>
+                      <select style="width:110px" class="form-control" [(ngModel)]="selectedregion" name="region" required>
+                        <option>Addis Ababa</option>
+                        <option>Amhara</option>
+                        <option>Tigray</option>
+                        <option>Oromiya</option>
+                        <option>SNNP</option>
+                        <option>Gambella</option>
+                        <option>Afar</option>
+                        <option>Somali</option>
+                        <option>Benishangul</option>
+                        <option>Harar</option>
+
+                      </select>
+                    </th>
+                    <th><input type="text" style='width:100px' [(ngModel)]="selectedzone" name="zone" class="form-control" placeholder="Zone" required></th>
+                    <th><input type="text" style='width:100px' [(ngModel)]="selectedworeda" name="woreda" class="form-control" placeholder="Woreda" required></th>
+                    <th><input type="text" style='width:100px' [(ngModel)]="selectedkebele"  name="kebele" class="form-control" placeholder="Kebele" required></th>
+                    <th><input type="text" style='width:100px' [(ngModel)]="selectedtelephone" name="telephone" class="form-control" placeholder="Telephone" required></th>
+                    <th><input type="text" style='width:100px' [(ngModel)]="selectedpobox" name="pobox" class="form-control" placeholder="P.O.Box" required></th>
+                   <th><select   style='width:110px' disabled [(ngModel)]="selectedadministrator" name="administrator" class="form-control" required>
+
+<!--                      <option *ngFor="let st for staffs">{{st.firstname}}</option>-->
+                     <option  *ngFor="let p of staffs;"> {{p.firstname}} {{" "}}{{p.lastname}}</option>
+<!--                     // <option>Kebde</option>-->
+
+                     <option >hdbfnm</option>
+                     <option>sdsad</option>
+
+                    </select></th>
+                    <th><button type="submit"  style="width:150px" (click)="onUpdate()" class="btn btn-compose" ><i class="fa fa-save fa-lg">&nbsp;</i>Update</button></th>
+                  </tr>
+                  </tfoot>
+                  <tbody>
+                  <tr *ngFor="let post of branches; let i = index" >
+                    <td>{{post.branchname}}</td>
+                    <td>{{post.city}}</td>
+                    <td>{{post.region}}</td>
+                    <td>{{post.zone}}</td>
+                    <td>{{post.woreda}}</td>
+                    <td>{{post.kebele}}</td>
+                    <td>{{post.telephone}}</td>
+                    <td>{{post.pobox}}</td>
+                    <td>{{post.administrator}}</td>
+
+                    <td><button class="btn btn-primary btn-sm" (click)="selectRow( i, post ,'none')"><i class="fa fa-pencil fa-md"></i>&nbsp;Edit</button> <button (click)="selectRow( i, post ,'delete')" class="btn btn-danger btn-sm"><i class="fa fa-trash fa-md"></i>&nbsp; Delete</button></td>
+                  </tr>
+
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- Add -->
+    <div class="modal fade" id="addnew">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+                                <span>
+                                    <h4 class="text-center" style="padding:0px;margin:0;">Branch Information</h4>
+                                    <button style="padding:0px;margin:0;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </span>
+
+          </div>
+          <div class="row mt">
+            <div class="col-lg-12">
+
+              <!-- <div class="form-panel"> -->
+              <form role="form" class="form-horizontal style-form" #f="ngForm" (ngSubmit)="onSubmit()">
+
+<!--                <button type="submit">Submit</button>-->
+
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]="branch.branchname" name='branchname' placeholder="Name of Branch *" required>
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]="branch.city" name="city" placeholder="City *" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]="branch.region" name="region" placeholder="Subcity/Region *" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control"  [(ngModel)]="branch.zone" name="zone" placeholder="Zone *" required>
+                  </div>
+
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]="branch.woreda" name="woreda" placeholder="Woreda *" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]="branch.kebele" name="kebele" placeholder="Kebele *">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]="branch.telephone" name="telephone" placeholder="Telephone (Office) *" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]="branch.pobox" name="pobox" placeholder="P.O.Box" required>
+                  </div>
+
+                  <div class="form-group">
+                    <select class="form-control" disabled [(ngModel)]="branch.administrator" name="administrator">
+                      <option >Adminstrator</option>
+                    </select>
+                  </div>
+
+
+
+                </div>
+
+
+                <div class="col-md-12">
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal">
+                      <i class="fa fa-close"></i> Close</button>
+                    <button type="submit" class="btn btn-primary btn-flat" name="add">
+                      <i class="fa fa-save"></i> Register</button>
+
+                  </div>
+
+                </div>
+
+
+              </form>
+              <!-- </div> -->
+              <!-- /form-panel -->
+            </div>
+            <!-- /col-lg-12 -->
+          </div>
+          <!-- /row -->
+
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>
+

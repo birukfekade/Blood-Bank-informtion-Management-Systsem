@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+<section id="main-content" >
+  <section class="wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb" style="margin-top:20px;">
+        <li>
+          <a href="/dashboard">
+            <i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="active">Profile</li>
+      </ol>
+    </section>
+
+  <div class="row" style="padding-bottom: 5%; padding-top: 2%;">
+<!--    <div class="col-lg-2 col-md-2"></div>-->
+    <div class="col-md-6 col-sm-12 profile-text col-lg-6 text-center">
+      <div class="profile-pic">
+        <p><img src="../../assets/images/ui-sam.jpg" class="img-circle" width="80"></p>
+        <p>
+
+
+        </p>
+      </div>
+      <h3>{{user.username}}</h3><br>
+<!--      <h3>Biruk Mamo</h3><br>-->
+      <h5><i class="fa fa-user-secret"></i> {{user.role}}</h5><br>
+      <h5><i class="fa fa-home"></i> Addis Ababa</h5><br>
+      <h5><i class="fa fa-envelope"></i> {{user.email}}</h5>
+<!--      <h5><i class="fa fa-envelope"></i> biruk.bm17@gmail.com</h5>-->
+
+      <br>
+
+    </div>
+    <!-- /col-md-4 -->
+    <div class="col-md-6 col-lg-5 col-sm-12">
+      <h3>Change Password</h3>
+      <form role="form" class="text-center" #f="ngForm" >
+        <div class="form-group">
+          <input type="password" [(ngModel)]="oldPwd" name="oldPwd" class="form-control" placeholder="Old Password">
+
+        </div>
+        <div class="form-group">
+          <input type="password" [(ngModel)]="newPwd" name="newPwd" class="form-control" placeholder="New Password">
+        </div>
+        <div class="form-group">
+          <input type="password"  [(ngModel)]="confirmPwd" name="confirmPwd" class="form-control" placeholder="Confirm New Password">
+        </div>
+        <p><button class="btn btn-theme btn-md" type="submit"  (click)="onReset()"><i class="fa fa-refresh"></i> Reset Password</button></p>
+      </form>
+    </div>
+
+        </div>
+
+
+
+  </section>
+</section>
+<app-footer></app-footer>

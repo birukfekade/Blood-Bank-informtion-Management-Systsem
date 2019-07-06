@@ -1,0 +1,223 @@
+<section id="container">
+    <!-- **********************************************************************************************************************************************************
+  TOP BAR CONTENT & NOTIFICATIONS
+  *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+        <div class="sidebar-toggle-box">
+            <div style="color:white" class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+        </div>
+        <!--logo start-->
+        <a routerLink="/dashboard" class="logo hidden-xs">
+            <b>BB
+        <span>IMS</span>
+      </b>
+        </a>
+        <!--logo end-->
+        <div class="nav notify-row show " *ngIf="currentrole === 'Branch Administrator' ||currentrole === 'Super Administrator' ">
+            <!--  notification start -->
+            <ul class="nav top-menu">
+                <!-- settings start -->
+
+                <!-- inbox dropdown start-->
+                <li id="header_inbox_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="">
+                        <i class="fa fa-medkit" style="color: red"></i>
+                    </a>
+                    <ul class="dropdown-menu extended inbox">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green">Manage Blood Stock</p>
+                        </li>
+                        <li>
+                            <a href="/stock">
+                                <div class="text-center">Stock</div>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/availiable">
+                                <div class="text-center">Availiable</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/used">
+                                <div class="text-center">Used</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/history">
+                                <div class="text-center">History</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- inbox dropdown end -->
+                <!-- notification dropdown start-->
+                <li id="header_notification_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="/">
+                        <i class="fa fa-bell-o" style="color: red"></i>
+                        <!--            <span class="badge bg-warning"></span>-->
+                    </a>
+                    <ul class="dropdown-menu extended notification">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green">New Notifications</p>
+                        </li>
+
+                        <li *ngFor="let bt of transferbloods" class="text-center">
+
+                            <a href="/transferblood" *ngIf="bt.status === false"> <span *ngIf="bt.status === false" style="font-weight: bold"> {{bt.requestbranchid}}  <span style="background: red; color: white;"> | {{bt.type}} |</span> {{bt.requestedamount}}ml</span>
+
+                                <i *ngIf="bt.status === false" class="fa fa-check label-success" style="font-size: 20px; alignment: right">
+
+             </i></a>
+
+
+
+                        </li>
+
+                    </ul>
+                </li>
+                <!-- notification dropdown end -->
+            </ul>
+            <!--  notification end -->
+        </div>
+        <div class="top-menu">
+            <ul class="nav pull-right top-menu">
+                <li>
+                    <!--          <button (click)="logout()" class="btn btn-compose"><i (click)="logout()" class="fa fa-power-off fa-lg">&nbsp;</i></button>-->
+                    <a class="logout" (click)="logout()"><i  class="fa fa-power-off fa-lg">&nbsp;</i></a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!--header end-->
+    <!-- **********************************************************************************************************************************************************
+  MAIN SIDEBAR MENU
+  *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+                <div class="hidden-xs">
+
+                    <p class="centered ">
+                        <a routerLink="/dashboard">
+                            <img src="../../assets/images/ui-sam.jpg" class="img-circle" width="80">
+                        </a>
+                    </p>
+                    <h5 class="centered">NBBS of Ethiopia</h5>
+                </div>
+                <li class="mt">
+                    <a routerLink="/dashboard">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                </li>
+                <li class="sub-menu" *ngIf="currentrole==='Super Administrator' || currentrole==='Branch Administrator'">
+                    <a routerLink="/branch" routerLinkActive="active">
+                        <i class="fa fa-university"></i>
+                        <span>Branches</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a routerLink="/hospital" routerLinkActive="active" *ngIf="currentrole==='Super Administrator' || currentrole==='Hospital Administrator' || currentrole==='Branch Administrator'">
+                        <i class="fa fa-hospital-o"></i>
+                        <span>Hospitals</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a routerLink="/donationcenter" routerLinkActive="active" *ngIf="currentrole==='Super Administrator' || currentrole==='Branch Administrator'  ">
+                        <i class="fa fa-building"></i>
+                        <span>Donation Centers</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a routerLink="/donor" routerLinkActive="active" *ngIf="currentrole==='Laboratory Technician' || currentrole==='Blood Collector'">
+                        <i class="fa fa-users"></i>
+                        <span>Donors</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a routerLink="/staff" routerLinkActive="active" *ngIf="currentrole==='Super Administrator' || currentrole==='Branch Administrator'  ">
+                        <i class="fa fa-user-md"></i>
+                        <span>Staff</span>
+                    </a>
+                </li>
+
+                <li *ngIf="currentrole === 'Super Administrator'" class="sub-menu">
+                    <a routerLink="/report">
+                        <i class="fa fa-book"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li *ngIf="currentrole === 'Blood Collector'" class="sub-menu">
+                    <a routerLink="/donate">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>Donate Blood</span>
+                    </a>
+                </li>
+                <li *ngIf="currentrole === 'Laboratory Technician'" class="sub-menu">
+                    <a routerLink="/addblood">
+                        <i class="fa fa-plus-circle"></i>
+                        <span>Add Blood</span>
+                    </a>
+                </li>
+                <li *ngIf="currentrole === 'Laboratory Technician' || currentrole === 'Branch Administrator'|| currentrole === 'Hospital Administrator' " class="sub-menu">
+                    <a routerLink="/getblood">
+                        <i class="fa fa-minus-circle"></i>
+                        <span>Get Blood</span>
+                    </a>
+                </li>
+                <li class="sub-menu" *ngIf="currentrole === 'Hospital Administrator' || currentrole === 'Super Administrator'|| currentrole === 'Branch Administrator' ">
+                    <a routerLink="/transferblood">
+                        <i class="fa fa-share-square-o"></i>
+                        <span>Transfer Blood</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a routerLink="/stock">
+                        <i class="fa fa-product-hunt"></i>
+                        <span>Blood Stock</span>
+                    </a>
+                </li>
+                <li class="sub-menu" *ngIf="currentrole === 'Hospital Administrator' || currentrole === 'Laboratory Technician'|| currentrole === 'Blood Collector' ">
+                    <a routerLink="/available">
+                        <i class="fa fa-support"></i>
+                        <span>Available</span>
+                    </a>
+                </li>
+                <li class="sub-menu" *ngIf="currentrole === 'Hospital Administrator' || currentrole === 'Laboratory Technician'|| currentrole === 'Blood Collector' ">
+                    <a routerLink="/used">
+                        <i class="fa fa-recycle"></i>
+                        <span>Used</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a routerLink="/profile">
+                        <i class="fa fa-cogs"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+
+
+
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+
+    <!-- **********************************************************************************************************************************************************
+  MAIN CONTENT
+  *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+
+    <!--main content end-->
+    <!--footer start-->
+
+    <!--footer end-->
+</section>

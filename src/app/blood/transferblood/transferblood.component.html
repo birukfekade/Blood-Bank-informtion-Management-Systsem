@@ -1,0 +1,115 @@
+
+<app-navbar></app-navbar>
+<section id="main-content" style="margin-bottom:11%">
+  <section class="wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb" style="margin-top:20px;">
+        <li>
+          <a href="/dashboard">
+            <i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="active">Transfer Blood</li>
+      </ol>
+    </section>
+    <!-- BASIC FORM VALIDATION -->
+    <div class="row mt">
+      <div class="col-lg-12">
+
+        <div   *ngIf="alert1" class="alert alert-success">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{notify}}
+        </div>
+        <div *ngIf="alert2" class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          {{notify}}
+        </div>
+
+          <div class="col-md-1"></div>
+          <div class="col-md-4">
+            <form role="form" class="form-horizontal style-form" #f="ngForm" (ngSubmit)="onAskBlood()">
+            <h2 style="color:black" class="text-center"> Ask Blood</h2>
+            <br>
+
+            <div class="form-group">
+              <input type="number" [(ngModel)]="transferblood.requestedamount" name="requestedamount" class="form-control" placeholder="Amount of Blood (per ml) *" required>
+            </div>
+
+            <div class="form-group" >
+              <select class="form-control" [(ngModel)]="transferblood.type" name="type" required>
+                <option>Type of Blood </option>
+                <option>A+ </option>
+                <option>A- </option>
+                <option>B+ </option>
+                <option>B-</option>
+                <option>AB+ </option>
+                <option>AB- </option>
+                <option>O+ </option>
+                <option>O- </option>
+              </select>
+
+            </div>
+              <div class="form-group">
+                <select class="form-control" [(ngModel)]="transferblood.providerbranchid" name="providerid" required>
+                  <option *ngFor="let br of branches" value="{{br.id}}">
+                    {{br.branchname}}
+                  </option>
+                </select>
+              </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-md"> Send Request</button>
+            </div>
+          </form>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-4">
+            <form role="form" class="form-horizontal style-form" #f="ngForm" (ngSubmit)="onProvide()">
+            <h2 style="color:black" class="text-center">Provide Blood</h2>
+            <br>
+            <div class="form-group">
+              <input type="number" class="form-control" [(ngModel)]="transferblood.privodedamount" name="providedamount" placeholder="Amount of Blood (per ml) *" required>
+            </div>
+            <div class="form-group">
+              <select class="form-control" [(ngModel)]="transferblood.type" name="type"  required>
+                <option>Type of Blood </option>
+                <option>A+</option>
+                <option>A- </option>
+                <option>B+ </option>
+                <option>B-</option>
+                <option>AB+ </option>
+                <option>AB- </option>
+                <option>O+ </option>
+                <option>O- </option>
+              </select>
+
+            </div>
+            <div class="form-group">
+              <select class="form-control" [(ngModel)]="transferblood.requestbranchid"  name="requestbranchid">
+                <option *ngFor="let br of branches" value="{{br.id}}"> {{br.branchname}}</option>
+
+              </select>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-success btn-md">Reply Request</button>
+            </div>
+
+            </form>
+
+          </div>
+          <div class="col-md-1"></div>
+
+<!--      </div>-->
+
+
+      <!-- </div> -->
+      <!-- /form-panel -->
+    </div>
+    <!-- /col-lg-12 -->
+    </div>
+    <!-- /row -->
+
+  </section>
+  <!-- /wrapper -->
+</section>
+<app-footer></app-footer>

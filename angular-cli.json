@@ -18,9 +18,27 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/datatables.net-bs/css/dataTables.bootstrap.css",
+        "../node_modules/datatables.net-select-bs/css/select.bootstrap.css",
+        "../node_modules/datatables.net-dt/css/jquery.dataTables.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../src/assets/css/font-awesome.min.css",
+        "../src/assets/css/style-responsive.css",
+        "../src/assets/css/table-responsive.css"
+
+
       ],
-      "scripts": [],
+      "scripts": [
+
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/datatables.net/js/jquery.dataTables.js",
+        "../src/assets/js/jquery.dcjqaccordion.2.7.js",
+        "../src/assets/js/jquery.scrollTo.min.js",
+        "../src/assets/js/jquery.nicescroll.js",
+        "../src/assets/js/common-scripts.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",

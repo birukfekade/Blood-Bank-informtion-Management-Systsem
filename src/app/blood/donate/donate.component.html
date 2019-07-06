@@ -1,0 +1,113 @@
+
+<app-navbar></app-navbar>
+<section id="main-content" style="margin-bottom:2%" >
+  <section class="wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb" style="margin-top:20px;">
+        <li>
+          <a href="/dashboard">
+            <i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="active">Donate Blood</li>
+      </ol>
+    </section>
+    <!-- BASIC FORM VALIDATION -->
+    <div class="row mt">
+      <div class="col-lg-12">
+
+        <form class="form-horizontal style-form">
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3 form-group">
+              <input class="form-control" type="text"[(ngModel)]="searchid" name="searchid" id="searchid" placeholder="Donor ID" required>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+              <button class="btn btn-primary btn-md text-center" (click)="onsearch()">Search &nbsp; <i class="fa fa-search-plus"></i></button>
+
+            </div>
+            <div class="col-md-3 "></div>
+          </div>
+        </form>
+<!--        <button class="btn btn-compose " (click)="ontry()">Trial</button>-->
+        <div class="row form-group text-center" style="font-size:15px;">
+          <div class="col-md-2" >{{sfname}}</div>
+          <div class="col-md-3">{{slname}}</div>
+          <div class="col-md-3">{{sgfname}}</div>
+          <div class="col-md-3 ">{{sphone}}</div>
+        </div>
+
+        <form role="form" class="form-horizontal style-form"  #f="ngForm" (ngSubmit)="onSubmit()">
+          <div class="col-md-1"></div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <select class="form-control"[(ngModel)]="donate.donationcenterid" name="donationcenter" required  >
+                <option *ngFor="let dc of donationcenters" value="{{dc.id}}">{{dc.dcname}}</option>
+              </select>
+<!--              <input type="text" [(ngModel)]="donate.donationcenterid" name="donationcenter" class="form-control" placeholder="Donation Center" required>-->
+            </div>
+                    <div class="form-group">
+              <input type="text" [(ngModel)]="donate.packnumber" name="packnumber" class="form-control" placeholder="Pack Number *" required>
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="donate.weight" name="weight" class="form-control" placeholder="Weight (KG)" required>
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="donate.height" name="height" class="form-control" placeholder="height (cm) *" required>
+            </div>
+
+
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-4">
+
+            <div class="form-group">
+              <input type="text" [(ngModel)]="donate.pressure" name="height" class="form-control" placeholder="Blood Pressure (sis/dis) *" required>
+            </div>
+            <div class="form-group">
+              <select class="form-control" [(ngModel)]="donate.approvedby" name="approvedby" aria-placeholder="Screened By" >
+                <option>Ahmed Siraj</option>
+
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <select class="form-control" [(ngModel)]="donate.amount" name="amount" aria-placeholder="Blood Volume /ml">
+                <option>350 </option>
+                <option>450 </option>
+
+              </select>
+            </div>
+            <div class="form-group">
+              <select  class="form-control" [(ngModel)]="donate.type" name="type" aria-placeholder="Type of Donation">
+                <option>Voluntary</option>
+                <option>450 ml</option>
+
+              </select>
+            </div>
+
+
+
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-12">
+
+            <div class="form-group text-center">
+              <button type="submit" class="form-control btn btn-success" style="width:200px">Donate Blood </button>
+            </div>
+          </div>
+
+
+        </form>
+        <!-- </div> -->
+        <!-- /form-panel -->
+      </div>
+      <!-- /col-lg-12 -->
+    </div>
+    <!-- /row -->
+
+  </section>
+  <!-- /wrapper -->
+</section>
+<app-footer></app-footer>
